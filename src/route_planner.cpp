@@ -2,12 +2,12 @@
 #include <algorithm>
 
 RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, float end_x, float end_y): m_Model(model) {
-    // Convert inputs to percentage:
-    start_x *= 0.01;
+    // Scaling between 0 to 1, so this converts inputs to percentages:
+    start_x *= 0.01; // Could write also write as var /= 100
     start_y *= 0.01;
     end_x *= 0.01;
     end_y *= 0.01;
-
+    
     // Finds and stores the closest nodes to the starting and ending coordinates 
     // into RoutePlanner's start_node and end_node attributes.
     start_node = &m_Model.FindClosestNode(start_x, start_y);
@@ -15,13 +15,14 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
 }
 
 
-// Calculates the heuristic value.
+// Calculates the heuristic value:
+// returns the distance from the passed argument to the 'end_node'.
 float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
     return node->distance(*end_node);
 }
 
 
-// Expands the current node by adding all unvisited neighbors to the open list.
+// Expands the current node by adding all unvisited neighbor nodes to the open list.
 void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     current_node->FindNeighbors();
     for(RouteModel::Node *neighbor : current_node->neighbors) {
@@ -47,14 +48,7 @@ RouteModel::Node *RoutePlanner::NextNode() {
 }
 
 
-// TODO 6: Complete the ConstructFinalPath method to return the final path found from your A* search.
-// Tips:
-// - This method should take the current (final) node as an argument and iteratively follow the 
-//   chain of parents of nodes until the starting node is found.
-// - For each node in the chain, add the distance from the node to its parent to the distance variable.
-// - The returned vector should be in the correct order: the start node should be the first element
-//   of the vector, the end node should be the last element.
-
+// Returns the final path found from A* search.
 std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node *current_node) {
     // Create path_found vector
     distance = 0.0f;
@@ -91,9 +85,10 @@ void RoutePlanner::AStarSearch() {
     while(!open_list.empty()) {
         current_node = NextNode(); // Sorts the open_list and returns the next closest node
 
-        // The end_node is reached with the shortest path and stored in m_Model.path . This path is then shown on the map.
+        // The end_node is reached with the shortest path and stored in m_Model.path . 
+        // Since the path is found, it exits and the path is then displayed on the map.
         if(current_node == end_node) {
-            m_Model.path = ConstructFinalPath(current_node);
+            m_Model.path = ConstructFinalPath(end_node);
             return;
         }
 
