@@ -3,8 +3,10 @@
 This project is an extension of the 2D Graphics Library, IO2D, and utilizes real map data from the open source [OpenStreetMap project](https://www.openstreetmap.org/) in the form *.osm (xml), 
 in order to find and display the shortest route using A* Search from user defined starting and ending coordinates between 0 to 100 inclusive.
 
-
-<img src="map.png" width="600" height="450" />
+Below is a render of the map when given the starting coordinate (25, 20) and the ending coordinate (57, 89). 
+The map's bottom left corner represents (0, 0) and the upper right corner represents (100, 100).
+The distance of the path between these points is 643.534 meters.
+<img src="25-20-57-89.png" width="600" height="450" />
 
 ## Cloning
 
