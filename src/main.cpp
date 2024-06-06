@@ -57,11 +57,11 @@ int main(int argc, const char **argv)
     float start_x, start_y, end_x, end_y;
     do{
         std::cout << "Please enter the starting coordinates \n (two numbers between 0 to 100 inclusive- ex: '14 100'): \n";
-        std::cin >> start_x, start_y;
+        std::cin >> start_x >> start_y;
     } while (start_x < 0 || start_x > 100 || start_y < 0 || start_y > 100);
     do{
         std::cout << "Please enter the starting coordinates \n (two numbers between 0 to 100 inclusive- ex: '14 100'): \n";
-        std::cin >> end_x, end_y;
+        std::cin >> end_x >> end_y;
     } while (end_x < 0 || end_x > 100 || end_y < 0 || end_y > 100);
     
 
