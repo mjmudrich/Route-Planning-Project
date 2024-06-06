@@ -1,6 +1,8 @@
 # Route Planning Project
 
-This repo contains the starter code for the Route Planning project.
+This project is an extension of the 2D Graphics Library, IO2D, and utilizes real map data from the open source [OpenStreetMap project](https://www.openstreetmap.org/) in the form *.osm (xml), 
+in order to find and display the shortest route using A* Search from user defined starting and ending coordinates between 0 to 100 inclusive.
+
 
 <img src="map.png" width="600" height="450" />
 
@@ -61,7 +63,7 @@ The testing executable is also placed in the `build` directory. From within `bui
 ```
 
 ## Troubleshooting
-* Some students have reported issues in cmake to find io2d packages, make sure you have downloaded [this](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md#xcode-and-libc).
+* If cmake is having trouble finding the io2d packages, make sure you have downloaded [this](https://github.com/cpp-io2d/P0267_RefImpl/blob/master/BUILDING.md#xcode-and-libc).
 * For MAC Users cmake issues: Comment these lines from CMakeLists.txt under P0267_RefImpl
     ```
     if( NOT DEFINED IO2D_WITHOUT_SAMPLES )
