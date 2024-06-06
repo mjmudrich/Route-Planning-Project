@@ -37,7 +37,7 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // with the current shortest estimated distance (lowest sum) while also removing this
 // node from the open_list.
 RouteModel::Node *RoutePlanner::NextNode() {
-    sort(open_list.begin(), open_list.end(), [](RouteModel::Node *&node1, RouteModel::Node *node2)
+    sort(open_list.begin(), open_list.end(), [](RouteModel::Node *&node1, RouteModel::Node *&node2)
     {
         return (node1->h_value + node1->g_value) > (node2->h_value + node2->g_value);
     });
